@@ -98,7 +98,7 @@ without having all Markdown content being treated as code:
 
 The test suite uses PHPUnit:
 
-   $ phpunit
+    $ phpunit
 
 ## License
 

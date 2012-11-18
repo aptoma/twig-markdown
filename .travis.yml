@@ -3,3 +3,9 @@ before_script: composer install --dev
 php:
   - "5.4"
   - "5.3"
+
+notifications:
+  hipchat: 6b3173ebb0aac4873aeda0310dc8c7@Kitchen Sink
+  email:
+      recipients:
+        - gunnar@aptoma.com
