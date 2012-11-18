@@ -1,0 +1,19 @@
+{
+    "name": "aptoma/twig-markdown",
+    "description": "Twig extension to work with Markdown content",
+    "keywords": ["twig", "markdown"],
+    "license": "MIT",
+    "require": {
+        "twig/twig": "~1",
+        "dflydev/markdown": "~1.0"
+    },
+    "autoload": {
+        "psr-0": { "Aptoma": "src/" }
+    },
+    "authors": [
+        {
+            "name": "Gunnar Lium",
+            "email": "gunnar@aptoma.com"
+        }
+    ]
+}
