@@ -32,7 +32,7 @@ Add the extension to the twig environment:
 ```php
 $parser = new \dflydev\markdown\MarkdownParser();
 
-$twig->addExtension(new \Aptoma\Twig\Extension\MarkdownExtension($parser);
+$twig->addExtension(new \Aptoma\Twig\Extension\MarkdownExtension($parser));
 ```
 
 Use filter or tag in your templates:
