@@ -32,7 +32,6 @@ class MarkdownNode extends \Twig_Node
             ->write('$lines = explode("\n", $content);' . PHP_EOL)
             ->write('$content = preg_replace(\'/^\' . $matches[0]. \'/\', "", $lines);' . PHP_EOL)
             ->write('$content = join("\n", $content);' . PHP_EOL)
-            ->write('$md = new dflydev\markdown\MarkdownParser();' . PHP_EOL)
-            ->write('echo $md->transformMarkdown($content);' . PHP_EOL);
+            ->write('echo $this->env->getExtension(\'markdown\')->parseMarkdown($content);' . PHP_EOL);
     }
 }

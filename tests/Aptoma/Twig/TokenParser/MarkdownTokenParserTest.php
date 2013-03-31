@@ -73,8 +73,7 @@ preg_match("/^\s*/", \$content, \$matches);
 \$lines = explode("\\n", \$content);
 \$content = preg_replace('/^' . \$matches[0]. '/', "", \$lines);
 \$content = join("\\n", \$content);
-\$md = new dflydev\markdown\MarkdownParser();
-echo \$md->transformMarkdown(\$content);
+echo \$this->env->getExtension('markdown')->parseMarkdown(\$content);
 EOF
             );
 
@@ -95,8 +94,7 @@ preg_match("/^\s*/", \$content, \$matches);
 \$lines = explode("\\n", \$content);
 \$content = preg_replace('/^' . \$matches[0]. '/', "", \$lines);
 \$content = join("\\n", \$content);
-\$md = new dflydev\markdown\MarkdownParser();
-echo \$md->transformMarkdown(\$content);
+echo \$this->env->getExtension('markdown')->parseMarkdown(\$content);
 EOF
         );
 
