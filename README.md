@@ -6,14 +6,25 @@ Twig Markdown Extension
 Twig Markdown extension provides a new filter and a tag to allow parsing of
 content as Markdown in [Twig][1] templates.
 
-This extension provides an integration with [dflydev-markdown](https://github.com/dflydev/dflydev-markdown)
-for the actual parsing of Markdown.
+This extension could be integrated with several Markdown parser as it provides an interface, which allows you to customize your Markdown parser.
+
+### Supported parsers
+
+ * [dflydev-markdown](https://github.com/dflydev/dflydev-markdown)
+ * [michelf/php-markdown](https://github.com/michelf/php-markdown)
+
+
+## Features
+
+ * Filter support `{{ "# Heading Level 1"|markdown }}`
+ * Tag support `{% markdown %}{% endmarkdown %}`
+
 
 ## Installation
 
 Update your composer.json:
 
-```
+```json
 // composer.json
 
 {
@@ -25,53 +36,38 @@ Update your composer.json:
 
 ## Usage
 
+### Tag and filter
+
 It's assumed that you will use Composer to handle autoloading.
 
 Add the extension to the twig environment:
 
 ```php
-$parser = new \dflydev\markdown\MarkdownParser();
 
-$twig->addExtension(new \Aptoma\Twig\Extension\MarkdownExtension($parser));
+use Aptoma\Twig\Extension;
+use Aptoma\Twig\Extension\MarkdownExtension;
+
+// Uses dflydev\markdown parser
+$parser = new MarkdownParser\DflydevMarkdownParser();
+
+// Uses Michelf\Markdown parser (if you prefer)
+$parser = new MarkdownParser\MichelfMarkdownParser();
+
+$twig->addExtension(new MarkdownExtension($parser));
 ```
+### Tag only
 
-Use filter or tag in your templates:
-
-```twig
-// Filter
-{{ "#Title"|markdown }}
-
-// becomes
-
-<h1>Title</h1>
-
-// Tag
-{% markdown %}
-#Title
-
-Paragraph of text.
-
-    $block = 'code';
-{% endmarkdown %}
-
-// becomes
-
-<h1>Title</h1>
-
-<p>Paragraph of text</p>
-
-<pre><code>$block = 'code';</pre></code>
-```
-
-If you only want to use the `markdown`-tag, you can also just add the token parser
+If you only want to use the `markdown-tag`, you can just add the token parser
 to the Twig environment:
 
 ```php
-$twig->addTokenParser(new \Aptoma\Twig\TokenParser\MarkdownTokenParser());
+use Aptoma\Twig\TokenParser\MarkdownTokenParser;
+
+$twig->addTokenParser(new MarkdownTokenParser());
 ```
 
 When used as a tag, any whitespace on the first line we be treated as padding and
-removed form all lines. This allows you to mix HTML and Markdown in your templates,
+removed from all lines. This allows you to mix HTML and Markdown in your templates,
 without having all Markdown content being treated as code:
 
 ```php
@@ -100,8 +96,13 @@ The test suite uses PHPUnit:
 
     $ phpunit
 
+## Adding a Markdown parser
+
+To add your own Markdown parser, just create a class in the `Aptoma/Twig/Extension/MarkdownParser` folder and name it according to your vendor ID.
+Your class MUST implement the interface `Aptoma\Twig\Extension\MarkdownParserInterface.php` to be accepted in the extension.
+
 ## License
 
 Twig Markdown Extension is licensed under the MIT license.
 
-[1]: http://twig.sensiolabs.org/
+[1]: http://twig.sensiolabs.org

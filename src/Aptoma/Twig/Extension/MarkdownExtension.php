@@ -2,8 +2,8 @@
 
 namespace Aptoma\Twig\Extension;
 
+use Aptoma\Twig\Extension\MarkdownParserInterface;
 use Aptoma\Twig\TokenParser\MarkdownTokenParser;
-use dflydev\markdown\IMarkdownParser;
 
 /**
  * MarkdownExtension provides support for Markdown.
@@ -14,11 +14,11 @@ class MarkdownExtension extends \Twig_Extension
 {
 
     /**
-     * @var IMarkdownParser
+     * @var MarkdownParserInterface $parser
      */
     private $parser;
 
-    public function __construct(IMarkdownParser $parser)
+    public function __construct(MarkdownParserInterface $parser)
     {
         $this->parser = $parser;
     }
@@ -32,10 +32,8 @@ class MarkdownExtension extends \Twig_Extension
             'markdown' => new \Twig_Filter_Method(
                 $this,
                 'parseMarkdown',
-                array(
-                    'is_safe' => array('html'),
-                )
-            ),
+                array('is_safe' => array('html'))
+            )
         );
     }
 
@@ -47,7 +45,7 @@ class MarkdownExtension extends \Twig_Extension
      */
     public function parseMarkdown($text)
     {
-        return $this->parser->transformMarkdown($text);
+        return $this->parser->transform($text);
     }
 
     /**
@@ -55,9 +53,7 @@ class MarkdownExtension extends \Twig_Extension
      */
     public function getTokenParsers()
     {
-        return array(
-            new MarkdownTokenParser()
-        );
+        return array(new MarkdownTokenParser());
     }
 
     /**
