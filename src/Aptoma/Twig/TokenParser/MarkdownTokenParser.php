@@ -3,12 +3,37 @@
 namespace Aptoma\Twig\TokenParser;
 
 use Aptoma\Twig\Node\MarkdownNode;
+use Aptoma\Twig\Extension\MarkdownParserInterface;
 
 /**
  * @author Gunnar Lium <gunnar@aptoma.com>
+ * @author Joris Berthelot <joris@berthelot.tel>
  */
 class MarkdownTokenParser extends \Twig_TokenParser
 {
+    /**
+     * @var The Markdown parser engine
+     */
+    protected $markdownParser;
+
+    /**
+     * @param MarkdownParserInterface $markdownParser The Markdown parser engine
+     */
+    public function __construct(MarkdownParserInterface $markdownParser)
+    {
+        $this->markdownParser = $markdownParser;
+    }
+
+    /**
+     * Markdown parser engine getter
+     *
+     * @return MarkdownParserInterface
+     */
+    public function getParser()
+    {
+        return $this->markdownParser;
+    }
+
     /**
      * Parses a token and returns a node.
      *
@@ -20,9 +45,9 @@ class MarkdownTokenParser extends \Twig_TokenParser
     public function parse(\Twig_Token $token)
     {
         $lineno = $token->getLine();
-
+        
         $this->parser->getStream()->expect(\Twig_Token::BLOCK_END_TYPE);
-        $body = $this->parser->subparse(array($this, 'decideBlockEnd'), true);
+        $body = $this->parser->subparse(array($this, 'decideMarkdownEnd'), true);
         $this->parser->getStream()->expect(\Twig_Token::BLOCK_END_TYPE);
 
         return new MarkdownNode($body, $lineno, $this->getTag());
@@ -34,7 +59,7 @@ class MarkdownTokenParser extends \Twig_TokenParser
      * @param \Twig_Token $token
      * @return bool
      */
-    public function decideBlockEnd(\Twig_Token $token)
+    public function decideMarkdownEnd(\Twig_Token $token)
     {
         return $token->test('endmarkdown');
     }

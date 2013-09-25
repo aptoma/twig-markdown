@@ -19,56 +19,10 @@ This extension could be integrated with several Markdown parser as it provides a
  * Filter support `{{ "# Heading Level 1"|markdown }}`
  * Tag support `{% markdown %}{% endmarkdown %}`
 
+When used as a tag, the indentation level of the first line sets the default indentation level for the rest of the tag content.
+From this indentation level, all same indentation or outdented levels text will be transformed as regular text.
 
-## Installation
-
-Update your composer.json:
-
-```json
-// composer.json
-
-{
-    "require": {
-        "aptoma/twig-markdown": "0.1.*"
-    }
-}
-```
-
-## Usage
-
-### Tag and filter
-
-It's assumed that you will use Composer to handle autoloading.
-
-Add the extension to the twig environment:
-
-```php
-
-use Aptoma\Twig\Extension;
-use Aptoma\Twig\Extension\MarkdownExtension;
-
-// Uses dflydev\markdown parser
-$parser = new MarkdownParser\DflydevMarkdownParser();
-
-// Uses Michelf\Markdown parser (if you prefer)
-$parser = new MarkdownParser\MichelfMarkdownParser();
-
-$twig->addExtension(new MarkdownExtension($parser));
-```
-### Tag only
-
-If you only want to use the `markdown-tag`, you can just add the token parser
-to the Twig environment:
-
-```php
-use Aptoma\Twig\TokenParser\MarkdownTokenParser;
-
-$twig->addTokenParser(new MarkdownTokenParser());
-```
-
-When used as a tag, any whitespace on the first line we be treated as padding and
-removed from all lines. This allows you to mix HTML and Markdown in your templates,
-without having all Markdown content being treated as code:
+This feature allows you to write your Markdown content at any indentation level without caring of Markdown internal transformation:
 
 ```php
 <div>
@@ -79,8 +33,10 @@ without having all Markdown content being treated as code:
 
     * List item 1
     * List item 2
+        * Sub List Item
+            * Sub Sub List Item
 
-    The following block will be treated as code, as it is indented more than the
+    The following block will be transformed as code, as it is indented more than the
     surrounding content:
 
         $code = "good";
@@ -90,16 +46,70 @@ without having all Markdown content being treated as code:
 </div>
 ```
 
+## Installation
+
+Update your composer.json:
+
+```json
+// composer.json
+
+{
+    "require": {
+        "aptoma/twig-markdown": "0.2.*"
+    }
+}
+```
+
+## Usage
+
+### Twig Extension
+
+The Twig extension provides the `markdown` tag and filter support.
+
+Assumed that you are using [composer](http://getcomposer.org) autoloading.
+
+Adds the extension to the Twig environment:
+
+```php
+
+use Aptoma\Twig\Extension\MarkdownExtension;
+use Aptoma\Twig\Extension\MarkdownParser;
+
+// Uses dflydev\markdown parser
+$parser = new MarkdownParser\DflydevMarkdownParser();
+
+// Uses Michelf\Markdown parser (if you prefer)
+$parser = new MarkdownParser\MichelfMarkdownParser();
+
+$twig->addExtension(new MarkdownExtension($parser));
+```
+### Twig Token Parser
+
+The Twig token parser provides the `markdown` tag only!
+
+```php
+use Aptoma\Twig\Extension\MarkdownParser;
+use Aptoma\Twig\TokenParser\MarkdownTokenParser;
+
+// Uses dflydev\markdown parser
+$parser = new MarkdownParser\DflydevMarkdownParser();
+
+// Uses Michelf\Markdown parser (if you prefer)
+$parser = new MarkdownParser\MichelfMarkdownParser();
+
+$twig->addTokenParser(new MarkdownTokenParser($parser));
+```
+
 ## Tests
 
 The test suite uses PHPUnit:
 
     $ phpunit
 
-## Adding a Markdown parser
+## Adding a Markdown parser engine
 
-To add your own Markdown parser, just create a class in the `Aptoma/Twig/Extension/MarkdownParser` folder and name it according to your vendor ID.
-Your class MUST implement the interface `Aptoma\Twig\Extension\MarkdownParserInterface.php` to be accepted in the extension.
+To add your own Markdown parser engine, just create a class in the `Aptoma/Twig/Extension/MarkdownParser` folder and name it according to your vendor ID.
+Your class MUST implement the interface `Aptoma\Twig\Extension\MarkdownParserInterface.php`.
 
 ## License
 
