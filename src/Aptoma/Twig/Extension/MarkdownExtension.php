@@ -2,25 +2,29 @@
 
 namespace Aptoma\Twig\Extension;
 
+use Aptoma\Twig\Extension\MarkdownEngineInterface;
 use Aptoma\Twig\TokenParser\MarkdownTokenParser;
-use dflydev\markdown\IMarkdownParser;
 
 /**
  * MarkdownExtension provides support for Markdown.
  *
  * @author Gunnar Lium <gunnar@aptoma.com>
+ * @author Joris Berthelot <joris@berthelot.tel>
  */
 class MarkdownExtension extends \Twig_Extension
 {
 
     /**
-     * @var IMarkdownParser
+     * @var MarkdownEngineInterface $markdownEngine
      */
-    private $parser;
+    private $markdownEngine;
 
-    public function __construct(IMarkdownParser $parser)
+    /**
+     * @param MarkdownEngineInterface $markdownEngine The Markdown parser engine
+     */
+    public function __construct(MarkdownEngineInterface $markdownEngine)
     {
-        $this->parser = $parser;
+        $this->markdownEngine = $markdownEngine;
     }
 
     /**
@@ -32,22 +36,20 @@ class MarkdownExtension extends \Twig_Extension
             'markdown' => new \Twig_Filter_Method(
                 $this,
                 'parseMarkdown',
-                array(
-                    'is_safe' => array('html'),
-                )
-            ),
+                array('is_safe' => array('html'))
+            )
         );
     }
 
     /**
-     * Transform Markdown text to HTML
+     * Transform Markdown content to HTML
      *
-     * @param $text
-     * @return string
+     * @param $content The Markdown content to be transformed
+     * @return string The result of the Markdown engine transformation
      */
-    public function parseMarkdown($text)
+    public function parseMarkdown($content)
     {
-        return $this->parser->transformMarkdown($text);
+        return $this->markdownEngine->transform($content);
     }
 
     /**
@@ -55,9 +57,7 @@ class MarkdownExtension extends \Twig_Extension
      */
     public function getTokenParsers()
     {
-        return array(
-            new MarkdownTokenParser()
-        );
+        return array(new MarkdownTokenParser($this->markdownEngine));
     }
 
     /**

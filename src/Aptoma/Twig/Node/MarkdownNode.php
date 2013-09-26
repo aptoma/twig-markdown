@@ -8,6 +8,7 @@ namespace Aptoma\Twig\Node;
  * It parses content as Markdown.
  *
  * @author Gunnar Lium <gunnar@aptoma.com>
+ * @author Joris Berthelot <joris@berthelot.tel>
  */
 class MarkdownNode extends \Twig_Node
 {
@@ -32,6 +33,6 @@ class MarkdownNode extends \Twig_Node
             ->write('$lines = explode("\n", $content);' . PHP_EOL)
             ->write('$content = preg_replace(\'/^\' . $matches[0]. \'/\', "", $lines);' . PHP_EOL)
             ->write('$content = join("\n", $content);' . PHP_EOL)
-            ->write('echo $this->env->getExtension(\'markdown\')->parseMarkdown($content);' . PHP_EOL);
+            ->write('echo $this->env->getTokenParsers()->getTokenParser(\'markdown\')->getEngine()->transform($content);' . PHP_EOL);
     }
 }
