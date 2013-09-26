@@ -16,6 +16,10 @@
     "require": {
         "twig/twig": "~1"
     },
+    "require-dev": {
+        "michelf/php-markdown": "~1",
+        "dflydev/markdown": "~1"
+    },
     "suggest": {
         "michelf/php-markdown": "Original Markdown engine with MarkdownExtra.",
         "dflydev/markdown": "Markdown engine based on the simple michelf/php-markdown engine."
