@@ -3,17 +3,24 @@
     "description": "Twig extension to work with Markdown content",
     "keywords": ["twig", "markdown"],
     "license": "MIT",
-    "require": {
-        "twig/twig": "~1",
-        "dflydev/markdown": "~1.0"
-    },
-    "autoload": {
-        "psr-0": { "Aptoma": "src/" }
-    },
     "authors": [
         {
             "name": "Gunnar Lium",
             "email": "gunnar@aptoma.com"
+        },
+        {
+            "name": "Joris Berthelot",
+            "email": "joris@berthelot.tel"
         }
-    ]
+    ],
+    "require": {
+        "twig/twig": "~1"
+    },
+    "suggest": {
+        "michelf/php-markdown": "Original Markdown engine with MarkdownExtra.",
+        "dflydev/markdown": "Markdown engine based on the simple michelf/php-markdown engine.",
+    },
+    "autoload": {
+        "psr-0": { "Aptoma": "src/" }
+    }
 }
