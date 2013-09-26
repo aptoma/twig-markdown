@@ -2,8 +2,6 @@
 
 namespace Aptoma\Twig\Extension;
 
-use dflydev\markdown\MarkdownParser;
-
 /**
  * @author Gunnar Liun <gunnar@aptoma.com>
  */
@@ -20,16 +18,21 @@ class MarkdownExtensionTest extends \PHPUnit_Framework_TestCase
     public function getParseMarkdownTests()
     {
         return array(
-            array('{{ "#Main Title"|markdown }}', '<h1>Main Title</h1>'.PHP_EOL),
-            array('{{ content|markdown }}', '<h1>Main Title</h1>'.PHP_EOL, array('content' => '#Main Title')),
+            array('{{ "#Main Title"|markdown }}', '<h1>Main Title</h1>' . PHP_EOL),
+            array('{{ content|markdown }}', '<h1>Main Title</h1>' . PHP_EOL, array('content' => '#Main Title'))
         );
+    }
+
+    protected function getEngine()
+    {
+        return new MarkdownEngine\DflydevMarkdownEngine();
     }
 
     protected function getTemplate($template)
     {
         $loader = new \Twig_Loader_Array(array('index' => $template));
         $twig = new \Twig_Environment($loader, array('debug' => true, 'cache' => false));
-        $twig->addExtension(new MarkdownExtension(new MarkdownParser()));
+        $twig->addExtension(new MarkdownExtension($this->getEngine()));
 
         return $twig->loadTemplate('index');
     }
