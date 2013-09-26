@@ -3,7 +3,7 @@
 namespace Aptoma\Twig\TokenParser;
 
 use Aptoma\Twig\Node\MarkdownNode;
-use Aptoma\Twig\Extension\MarkdownParserInterface;
+use Aptoma\Twig\Extension\MarkdownEngineInterface;
 
 /**
  * @author Gunnar Lium <gunnar@aptoma.com>
@@ -12,26 +12,26 @@ use Aptoma\Twig\Extension\MarkdownParserInterface;
 class MarkdownTokenParser extends \Twig_TokenParser
 {
     /**
-     * @var The Markdown parser engine
+     * @var The Markdown engine
      */
-    protected $markdownParser;
+    protected $markdownEngine;
 
     /**
-     * @param MarkdownParserInterface $markdownParser The Markdown parser engine
+     * @param MarkdownEngineInterface $markdownEngine The Markdown parser engine
      */
-    public function __construct(MarkdownParserInterface $markdownParser)
+    public function __construct(MarkdownEngineInterface $markdownEngine)
     {
-        $this->markdownParser = $markdownParser;
+        $this->markdownEngine = $markdownEngine;
     }
 
     /**
      * Markdown parser engine getter
      *
-     * @return MarkdownParserInterface
+     * @return MarkdownEngineInterface
      */
-    public function getParser()
+    public function getEngine()
     {
-        return $this->markdownParser;
+        return $this->markdownEngine;
     }
 
     /**

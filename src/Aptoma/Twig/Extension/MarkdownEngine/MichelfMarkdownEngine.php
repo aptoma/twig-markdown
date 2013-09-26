@@ -1,18 +1,18 @@
 <?php
 
-namespace Aptoma\Twig\Extension\MarkdownParser;
+namespace Aptoma\Twig\Extension\MarkdownEngine;
 
-use Aptoma\Twig\Extension\MarkdownParserInterface;
+use Aptoma\Twig\Extension\MarkdownEngineInterface;
 use Michelf\Markdown;
 
 /**
- * MichelfMarkdownParser.php
+ * MichelfMarkdownEngine.php
  *
  * Maps Michelf\Markdown to Aptoma\Twig Markdown Extension
  *
  * @author Joris Berthelot <joris@berthelot.tel>
  */
-class MichelfMarkdownParser implements MarkdownParserInterface
+class MichelfMarkdownEngine implements MarkdownEngineInterface
 {
     /**
      * {@inheritdoc}

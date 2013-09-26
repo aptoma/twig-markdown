@@ -3,13 +3,13 @@
 namespace Aptoma\Twig\Extension;
 
 /**
- * MarkdownParserInterface.php
+ * MarkdownEngineInterface.php
  *
- * Provide software interface to maps various Markdown parsers
+ * Provide software interface to maps various Markdown engines
  *
  * @author Joris Berthelot <joris@berthelot.tel>
  */
-interface MarkdownParserInterface
+interface MarkdownEngineInterface
 {
     /**
      * Transforms the given markdown data in HTML
@@ -20,7 +20,7 @@ interface MarkdownParserInterface
     public function transform($content);
 
     /**
-     * Return Markdown parser vendor ID
+     * Return Markdown engine vendor ID
      *
      * @return string
      */

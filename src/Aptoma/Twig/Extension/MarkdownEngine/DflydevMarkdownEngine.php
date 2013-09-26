@@ -1,9 +1,9 @@
 <?php
 
-namespace Aptoma\Twig\Extension\MarkdownParser;
+namespace Aptoma\Twig\Extension\MarkdownEngine;
 
-use Aptoma\Twig\Extension\MarkdownParserInterface;
-use dflydev\markdown\MarkdownParser as VendorMarkdownParser;
+use Aptoma\Twig\Extension\MarkdownEngineInterface;
+use dflydev\markdown\MarkdownParser;
 
 /**
  * DflydevMarkdownParser.php
@@ -12,14 +12,14 @@ use dflydev\markdown\MarkdownParser as VendorMarkdownParser;
  * 
  * @author Joris Berthelot <joris@berthelot.tel>
  */
-class DflydevMarkdownParser implements MarkdownParserInterface
+class DflydevMarkdownEngine implements MarkdownEngineInterface
 {
     /**
      * {@inheritdoc}
      */
     public function transform($content)
     {
-        return (new VendorMarkdownParser())->transformMarkdown($content);
+        return (new MarkdownParser())->transformMarkdown($content);
     }
 
     /**

@@ -2,7 +2,7 @@
 
 namespace Aptoma\Twig\Extension;
 
-use Aptoma\Twig\Extension\MarkdownParserInterface;
+use Aptoma\Twig\Extension\MarkdownEngineInterface;
 use Aptoma\Twig\TokenParser\MarkdownTokenParser;
 
 /**
@@ -15,16 +15,16 @@ class MarkdownExtension extends \Twig_Extension
 {
 
     /**
-     * @var MarkdownParserInterface $markdownParser
+     * @var MarkdownEngineInterface $markdownEngine
      */
-    private $markdownParser;
+    private $markdownEngine;
 
     /**
-     * @param MarkdownParserInterface $markdownParser The Markdown parser engine
+     * @param MarkdownEngineInterface $markdownEngine The Markdown parser engine
      */
-    public function __construct(MarkdownParserInterface $markdownParser)
+    public function __construct(MarkdownEngineInterface $markdownEngine)
     {
-        $this->markdownParser = $markdownParser;
+        $this->markdownEngine = $markdownEngine;
     }
 
     /**
@@ -45,11 +45,11 @@ class MarkdownExtension extends \Twig_Extension
      * Transform Markdown content to HTML
      *
      * @param $content The Markdown content to be transformed
-     * @return string The result of the Markdown parser transformation
+     * @return string The result of the Markdown engine transformation
      */
     public function parseMarkdown($content)
     {
-        return $this->markdownParser->transform($content);
+        return $this->markdownEngine->transform($content);
     }
 
     /**
@@ -57,7 +57,7 @@ class MarkdownExtension extends \Twig_Extension
      */
     public function getTokenParsers()
     {
-        return array(new MarkdownTokenParser($this->markdownParser));
+        return array(new MarkdownTokenParser($this->markdownEngine));
     }
 
     /**
