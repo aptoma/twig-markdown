@@ -23,16 +23,16 @@ class MarkdownExtensionTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    protected function getParser()
+    protected function getEngine()
     {
-        return new MarkdownParser\DflydevMarkdownParser();
+        return new MarkdownEngine\DflydevMarkdownEngine();
     }
 
     protected function getTemplate($template)
     {
         $loader = new \Twig_Loader_Array(array('index' => $template));
         $twig = new \Twig_Environment($loader, array('debug' => true, 'cache' => false));
-        $twig->addExtension(new MarkdownExtension($this->getParser()));
+        $twig->addExtension(new MarkdownExtension($this->getEngine()));
 
         return $twig->loadTemplate('index');
     }

@@ -1,6 +1,8 @@
 <?php
+
 namespace Aptoma\Twig\TokenParser;
 
+use Aptoma\Twig\Extension\MarkdownEngine;
 use Aptoma\Twig\Node\MarkdownNode;
 
 /**
@@ -39,9 +41,8 @@ class MarkdownTokenParserTest extends \Twig_Test_NodeTestCase
         $this->assertEquals($bodyPrepared, $content);
 
         // Assert Markdown output
-        $md = new \dflydev\markdown\MarkdownParser();
         $expectedOutput = "<h1>Title</h1>\n\n<p>paragraph</p>\n\n<pre><code>code\n</code></pre>\n";
-        $this->assertEquals($expectedOutput, $md->transformMarkdown($content));
+        $this->assertEquals($expectedOutput, $this->getEngine()->transform($content));
     }
 
     /**
@@ -52,6 +53,11 @@ class MarkdownTokenParserTest extends \Twig_Test_NodeTestCase
     public function testCompile($node, $source, $environment = null)
     {
         parent::testCompile($node, $source, $environment);
+    }
+
+    protected function getEngine()
+    {
+        return new MarkdownEngine\DflydevMarkdownEngine();
     }
 
     public function getTests()
@@ -73,7 +79,7 @@ preg_match("/^\s*/", \$content, \$matches);
 \$lines = explode("\\n", \$content);
 \$content = preg_replace('/^' . \$matches[0]. '/', "", \$lines);
 \$content = join("\\n", \$content);
-echo \$this->env->getExtension('markdown')->parseMarkdown(\$content);
+echo \$this->env->getTokenParsers()->getTokenParser('markdown')->getEngine()->transform(\$content);
 EOF
             );
 
@@ -94,7 +100,7 @@ preg_match("/^\s*/", \$content, \$matches);
 \$lines = explode("\\n", \$content);
 \$content = preg_replace('/^' . \$matches[0]. '/', "", \$lines);
 \$content = join("\\n", \$content);
-echo \$this->env->getExtension('markdown')->parseMarkdown(\$content);
+echo \$this->env->getTokenParsers()->getTokenParser('markdown')->getEngine()->transform(\$content);
 EOF
         );
 

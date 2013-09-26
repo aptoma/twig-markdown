@@ -75,13 +75,13 @@ Adds the extension to the Twig environment:
 use Aptoma\Twig\Extension\MarkdownExtension;
 use Aptoma\Twig\Extension\MarkdownEngine;
 
-// Uses dflydev\markdown parser
-$parser = new MarkdownEngine\DflydevMarkdownEngine();
+// Uses dflydev\markdown engine
+$engine = new MarkdownEngine\DflydevMarkdownEngine();
 
-// Uses Michelf\Markdown parser (if you prefer)
-$parser = new MarkdownEngine\MichelfMarkdownEngine();
+// Uses Michelf\Markdown engine (if you prefer)
+$engine = new MarkdownEngine\MichelfMarkdownEngine();
 
-$twig->addExtension(new MarkdownExtension($parser));
+$twig->addExtension(new MarkdownExtension($engine));
 ```
 ### Twig Token Parser
 
@@ -91,13 +91,13 @@ The Twig token parser provides the `markdown` tag only!
 use Aptoma\Twig\Extension\MarkdownEngine;
 use Aptoma\Twig\TokenParser\MarkdownTokenParser;
 
-// Uses dflydev\markdown parser
-$parser = new MarkdownEngine\DflydevMarkdownEngine();
+// Uses dflydev\markdown engine
+$engine = new MarkdownEngine\DflydevMarkdownEngine();
 
-// Uses Michelf\Markdown parser (if you prefer)
-$parser = new MarkdownEngine\MichelfMarkdownEngine();
+// Uses Michelf\Markdown engine (if you prefer)
+$engine = new MarkdownEngine\MichelfMarkdownEngine();
 
-$twig->addTokenParser(new MarkdownTokenParser($parser));
+$twig->addTokenParser(new MarkdownTokenParser($engine));
 ```
 
 ## Tests
