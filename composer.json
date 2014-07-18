@@ -17,6 +17,8 @@
         "twig/twig": "~1"
     },
     "require-dev": {
+        "phpunit/phpunit": "~4.0",
+        "satooshi/php-coveralls": "~0.6",
         "michelf/php-markdown": "~1",
         "dflydev/markdown": "~1"
     },

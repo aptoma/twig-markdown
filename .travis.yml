@@ -1,11 +1,17 @@
 language: php
-before_script: composer install --dev
-php:
-  - "5.4"
-  - "5.3"
 
-notifications:
-  hipchat: 6b3173ebb0aac4873aeda0310dc8c7@Kitchen Sink
-  email:
-      recipients:
-        - gunnar@aptoma.com
+php:
+  - 5.3
+  - 5.4
+
+install:
+  - composer install
+
+before_script:
+  - mkdir -p build/logs
+
+script:
+  - vendor/bin/phpunit --coverage-clover build/logs/clover.xml
+
+after_script:
+  - php vendor/bin/coveralls -v
