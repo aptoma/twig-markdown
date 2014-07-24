@@ -2,7 +2,7 @@
 
 namespace Aptoma\Twig\TokenParser;
 
-use Aptoma\Twig\Extension\MarkdownEngine;
+use Aptoma\Twig\Extension\MarkdownEngine\MichelfMarkdownEngine;
 use Aptoma\Twig\Node\MarkdownNode;
 
 /**
@@ -57,7 +57,7 @@ class MarkdownTokenParserTest extends \Twig_Test_NodeTestCase
 
     protected function getEngine()
     {
-        return new MarkdownEngine\DflydevMarkdownEngine();
+        return new MichelfMarkdownEngine();
     }
 
     public function getTests()

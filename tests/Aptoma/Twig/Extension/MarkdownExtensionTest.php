@@ -2,6 +2,8 @@
 
 namespace Aptoma\Twig\Extension;
 
+use Aptoma\Twig\Extension\MarkdownEngine\MichelfMarkdownEngine;
+
 /**
  * @author Gunnar Liun <gunnar@aptoma.com>
  */
@@ -25,7 +27,7 @@ class MarkdownExtensionTest extends \PHPUnit_Framework_TestCase
 
     protected function getEngine()
     {
-        return new MarkdownEngine\DflydevMarkdownEngine();
+        return new MichelfMarkdownEngine();
     }
 
     protected function getTemplate($template)

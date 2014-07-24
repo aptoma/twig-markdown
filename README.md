@@ -59,22 +59,13 @@ Update your `composer.json`:
 }
 ```
 
-According to which Markdown engine you wish to use, you can also add to your `composer.json` as follow:
+You can choose to provide your own Markkdown engine, although we recommend
+using [michelf/php-markdown](https://github.com/michelf/php-markdown):
 
 ```json
 {
     "require": {
-        "dflydev/markdown": "~1.0"
-    }
-}
-```
-
-Or:
-
-```json
-{
-    "require": {
-        "michelf/php-markdown": "1.3"
+        "michelf/php-markdown": "~1.3"
     }
 }
 ```
@@ -85,23 +76,19 @@ Or:
 
 The Twig extension provides the `markdown` tag and filter support.
 
-Assumed that you are using [composer](http://getcomposer.org) autoloading.
-
-Adds the extension to the Twig environment:
+Assuming that you are using [composer](http://getcomposer.org) autoloading,
+add the extension to the Twig environment:
 
 ```php
 
 use Aptoma\Twig\Extension\MarkdownExtension;
 use Aptoma\Twig\Extension\MarkdownEngine;
 
-// Uses dflydev\markdown engine
-$engine = new MarkdownEngine\DflydevMarkdownEngine();
-
-// Uses Michelf\Markdown engine (if you prefer)
 $engine = new MarkdownEngine\MichelfMarkdownEngine();
 
 $twig->addExtension(new MarkdownExtension($engine));
 ```
+
 ### Twig Token Parser
 
 The Twig token parser provides the `markdown` tag only!
@@ -110,25 +97,23 @@ The Twig token parser provides the `markdown` tag only!
 use Aptoma\Twig\Extension\MarkdownEngine;
 use Aptoma\Twig\TokenParser\MarkdownTokenParser;
 
-// Uses dflydev\markdown engine
-$engine = new MarkdownEngine\DflydevMarkdownEngine();
-
-// Uses Michelf\Markdown engine (if you prefer)
 $engine = new MarkdownEngine\MichelfMarkdownEngine();
 
 $twig->addTokenParser(new MarkdownTokenParser($engine));
 ```
+
+### Using a different Markdown parser engine
+
+If you want to use a different Markdown parser, you need to create an adapter
+that implements `Aptoma\Twig\Extension\MarkdownEngineInterface.php`. Have
+a look at `Aptoma\Twig\Extension\MarkdownEngine\MichelfMarkdownEngine` for an
+example.
 
 ## Tests
 
 The test suite uses PHPUnit:
 
     $ phpunit
-
-## Adding a Markdown parser engine
-
-To add your own Markdown parser engine, just create a class in the `Aptoma/Twig/Extension/MarkdownEngine` folder and name it according to your vendor ID.
-Your class MUST implement the interface `Aptoma\Twig\Extension\MarkdownEngineInterface.php`.
 
 ## License
 
