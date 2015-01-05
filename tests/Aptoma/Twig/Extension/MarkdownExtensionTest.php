@@ -20,8 +20,8 @@ class MarkdownExtensionTest extends \PHPUnit_Framework_TestCase
     public function getParseMarkdownTests()
     {
         return array(
-            array('{{ "#Main Title"|markdown }}', '<h1>Main Title</h1>' . PHP_EOL),
-            array('{{ content|markdown }}', '<h1>Main Title</h1>' . PHP_EOL, array('content' => '#Main Title'))
+            array('{{ "# Main Title"|markdown }}', '<h1>Main Title</h1>' . PHP_EOL),
+            array('{{ content|markdown }}', '<h1>Main Title</h1>' . PHP_EOL, array('content' => '# Main Title'))
         );
     }
 
