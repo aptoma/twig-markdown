@@ -13,7 +13,7 @@ This extension could be integrated with several Markdown parser as it provides a
 
  * [dflydev-markdown](https://github.com/dflydev/dflydev-markdown)
  * [michelf/php-markdown](https://github.com/michelf/php-markdown) (+ MarkdownExtra)
-
+ * [league/commonmark](http://commonmark.thephpleague.com/)
 
 ## Features
 
@@ -59,13 +59,23 @@ Update your `composer.json`:
 }
 ```
 
-You can choose to provide your own Markkdown engine, although we recommend
+You can choose to provide your own Markdown engine, although we recommend
 using [michelf/php-markdown](https://github.com/michelf/php-markdown):
 
 ```json
 {
     "require": {
         "michelf/php-markdown": "~1.3"
+    }
+}
+```
+
+You may also use the [PHP League CommonMark engine](http://commonmark.thephpleague.com/):
+
+```json
+{
+    "require": {
+        "league/commonmark": "~0.5"
     }
 }
 ```
