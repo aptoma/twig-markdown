@@ -11,7 +11,6 @@ This extension could be integrated with several Markdown parser as it provides a
 
 ### Supported parsers
 
- * [dflydev-markdown](https://github.com/dflydev/dflydev-markdown)
  * [michelf/php-markdown](https://github.com/michelf/php-markdown) (+ MarkdownExtra)
  * [league/commonmark](http://commonmark.thephpleague.com/)
 
