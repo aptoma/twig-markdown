@@ -48,18 +48,28 @@ This feature allows you to write your Markdown content at any indentation level 
 
 ## Installation
 
-Update your `composer.json`:
+Run the composer command to install the latest stable version:
+
+```bash
+composer require aptoma/twig-markdown
+```
+
+Or update your `composer.json`:
 
 ```json
 {
     "require": {
-        "aptoma/twig-markdown": "0.2.*"
+        "aptoma/twig-markdown": "~1.1"
     }
 }
 ```
 
 You can choose to provide your own Markdown engine, although we recommend
 using [michelf/php-markdown](https://github.com/michelf/php-markdown):
+
+```bash
+composer require michelf/php-markdown ~1.3
+```
 
 ```json
 {
@@ -70,6 +80,10 @@ using [michelf/php-markdown](https://github.com/michelf/php-markdown):
 ```
 
 You may also use the [PHP League CommonMark engine](http://commonmark.thephpleague.com/):
+
+```bash
+composer require league/commonmark ~0.5
+```
 
 ```json
 {
