@@ -13,6 +13,7 @@ This extension could be integrated with several Markdown parser as it provides a
 
  * [michelf/php-markdown](https://github.com/michelf/php-markdown) (+ MarkdownExtra)
  * [league/commonmark](http://commonmark.thephpleague.com/)
+ * [KnpLabs/php-github-api](https://github.com/KnpLabs/php-github-api)
 
 ## Features
 

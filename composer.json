@@ -21,10 +21,12 @@
         "satooshi/php-coveralls": "~0.6",
         "codeclimate/php-test-reporter": "dev-master",
         "michelf/php-markdown": "~1",
-        "league/commonmark": "~0.5"
+        "league/commonmark": "~0.5",
+        "knplabs/github-api": "~1.2"
     },
     "suggest": {
-        "michelf/php-markdown": "Original Markdown engine with MarkdownExtra."
+        "michelf/php-markdown": "Original Markdown engine with MarkdownExtra.",
+        "knplabs/github-api": "Needed for using GitHub's Markdown engine provided through their API."
     },
     "autoload": {
         "psr-0": { "Aptoma": "src/" }
