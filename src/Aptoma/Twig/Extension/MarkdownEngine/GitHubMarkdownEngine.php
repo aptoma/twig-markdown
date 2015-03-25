@@ -16,23 +16,23 @@ class GitHubMarkdownEngine implements MarkdownEngineInterface
     /**
      * Constructor
      *
-     * @param string $context_repo The repository context. Pass a GitHub repo
+     * @param string $contextRepo The repository context. Pass a GitHub repo
      *        such as 'aptoma/twig-markdown' to render e.g. issues #23 in the
      *        context of the repo.
      * @param bool $gfm Whether to use GitHub's Flavored Markdown or the
      *        standard markdown. Default is true.
-     * @param string $cache_dir Location on disk where rendered documents should
+     * @param string $cacheDir Location on disk where rendered documents should
      *        be stored.
      * @param \Github\Client $client Client object to use. A new Github\Client()
      *        object is constructed automatically if $client is null.
      */
-    public function __construct($context_repo = null, $gfm = true, $cache_dir = '/tmp/github-markdown-cache', $client=null)
+    public function __construct($contextRepo = null, $gfm = true, $cacheDir = '/tmp/github-markdown-cache', \GitHub\Client $client=null)
     {
-        $this->repo = $context_repo;
+        $this->repo = $contextRepo;
         $this->mode = $gfm ? 'gfm' : 'markdown';
-        $this->cache_dir = rtrim($cache_dir, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
-        if (!is_dir($this->cache_dir)) {
-            @mkdir($this->cache_dir, 0777, true);
+        $this->cacheDir = rtrim($cacheDir, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
+        if (!is_dir($this->cacheDir)) {
+            @mkdir($this->cacheDir, 0777, true);
         }
 
         if ($client === null) {
@@ -46,13 +46,13 @@ class GitHubMarkdownEngine implements MarkdownEngineInterface
      */
     public function transform($content)
     {
-        $cache_file = $this->getCachePath($content);
-        if (file_exists($cache_file)) {
-            return file_get_contents($cache_file);;
+        $cacheFile = $this->getCachePath($content);
+        if (file_exists($cacheFile)) {
+            return file_get_contents($cacheFile);;
         }
 
         $response = $this->api->render($content, $this->mode, $this->repo);
-        file_put_contents($cache_file, $response);
+        file_put_contents($cacheFile, $response);
         return $response;
     }
 
@@ -66,11 +66,11 @@ class GitHubMarkdownEngine implements MarkdownEngineInterface
 
     private function getCachePath($content)
     {
-        return $this->cache_dir . md5($content) . '_' . $this->mode. '_' . str_replace('/', '.', $this->repo);
+        return $this->cacheDir . md5($content) . '_' . $this->mode. '_' . str_replace('/', '.', $this->repo);
     }
 
     private $api;
-    private $cache_dir;
+    private $cacheDir;
     private $repo;
     private $mode;
 }
