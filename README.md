@@ -126,6 +126,29 @@ $engine = new MarkdownEngine\MichelfMarkdownEngine();
 $twig->addTokenParser(new MarkdownTokenParser($engine));
 ```
 
+### GitHub Markdown Engine
+
+`MarkdownEngine\GitHubMarkdownEngine` provides an interface to GitHub's markdown engine using their public API via [`KnpLabs\php-github-api`][2]. To reduce API calls, rendered documents are hashed and cached in the filesystem. You can pass a GitHub repository and the path to be used for caching to the constructor:
+
+```php
+use Aptoma\Twig\Extension\MarkdownEngine;
+
+$engine = new MarkdownEngine\GitHubMarkdownEngine(
+    'aptoma/twig-markdown', // The GitHub repository to use as a context
+    true,                   // Whether to use GitHub's Flavored Markdown (GFM)
+    '/tmp/markdown-cache',  // Path on filesystem to store rendered documents
+);
+```
+
+In order to authenticate the API client (for instance), it's possible to pass an own instance of `\GitHub\Client` instead of letting the engine create one itself:
+
+```php
+$client = new \GitHub\Client;
+$client->authenticate('GITHUB_CLIENT_ID', 'GITHUB_CLIENT_SECRET', \Github\Client::AUTH_URL_CLIENT_ID);
+
+$engine = new MarkdownEngine\GitHubMarkdownEngine('aptoma/twig-markdown', true, '/tmp/markdown-cache', $client);
+```
+
 ### Using a different Markdown parser engine
 
 If you want to use a different Markdown parser, you need to create an adapter
@@ -144,3 +167,4 @@ The test suite uses PHPUnit:
 Twig Markdown Extension is licensed under the MIT license.
 
 [1]: http://twig.sensiolabs.org
+[2]: https://github.com/knplabs/php-github-api
