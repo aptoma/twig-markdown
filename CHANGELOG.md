@@ -1,12 +1,17 @@
 CHANGELOG
 =========
 
+1.2.0
+-----
+
+- *Added*: Add support for GitHub's markdown engine
+
 1.1.0
 -----
 
-- New: Add support for PHP League CommonMark engine
+- *Added*: Add support for PHP League CommonMark engine
 
 1.0.0
 -----
 
-- BC: Remove deprecated dflydev-markdown parser
+- *BC*: Remove deprecated dflydev-markdown parser
