@@ -15,21 +15,16 @@ use Parsedown;
 class ParsedownEngine implements MarkdownEngineInterface
 {
     /**
-     * Parsedown instance name.
-     */
-    const INSTANCE_NAME = 'atoma';
-
-    /**
      * @var Parsedown
      */
     protected $engine;
 
     /**
-     * Constructor.
+     * @param string|null $instanceName
      */
-    public function __construct()
+    public function __construct($instanceName = null)
     {
-        $this->engine = Parsedown::instance(self::INSTANCE_NAME);
+        $this->engine = Parsedown::instance($instanceName);
     }
 
     /**
