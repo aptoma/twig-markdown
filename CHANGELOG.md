@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+2.0.0
+-----
+
+- **BC**: Require Twig v1.12, in order to replace deprecated Twig_Filter_Method with Twig_SimpleFilter
+- **Added**: Add support for ParsedownEnging
+
 1.2.0
 -----
 

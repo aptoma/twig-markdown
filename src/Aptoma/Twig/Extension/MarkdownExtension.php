@@ -2,7 +2,6 @@
 
 namespace Aptoma\Twig\Extension;
 
-use Aptoma\Twig\Extension\MarkdownEngineInterface;
 use Aptoma\Twig\TokenParser\MarkdownTokenParser;
 
 /**
@@ -33,9 +32,9 @@ class MarkdownExtension extends \Twig_Extension
     public function getFilters()
     {
         return array(
-            'markdown' => new \Twig_Filter_Method(
-                $this,
-                'parseMarkdown',
+            new \Twig_SimpleFilter(
+                'markdown',
+                array($this, 'parseMarkdown'),
                 array('is_safe' => array('html'))
             )
         );
