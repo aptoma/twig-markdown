@@ -61,7 +61,7 @@ Or update your `composer.json`:
 ```json
 {
     "require": {
-        "aptoma/twig-markdown": "~1.1"
+        "aptoma/twig-markdown": "~2.0"
     }
 }
 ```
