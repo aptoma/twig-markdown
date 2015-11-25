@@ -3,7 +3,6 @@
 namespace Aptoma\Twig\TokenParser;
 
 use Aptoma\Twig\Node\MarkdownNode;
-use Aptoma\Twig\Extension\MarkdownEngineInterface;
 
 /**
  * @author Gunnar Lium <gunnar@aptoma.com>
@@ -12,40 +11,12 @@ use Aptoma\Twig\Extension\MarkdownEngineInterface;
 class MarkdownTokenParser extends \Twig_TokenParser
 {
     /**
-     * @var The Markdown engine
-     */
-    protected $markdownEngine;
-
-    /**
-     * @param MarkdownEngineInterface $markdownEngine The Markdown parser engine
-     */
-    public function __construct(MarkdownEngineInterface $markdownEngine)
-    {
-        $this->markdownEngine = $markdownEngine;
-    }
-
-    /**
-     * Markdown parser engine getter
-     *
-     * @return MarkdownEngineInterface
-     */
-    public function getEngine()
-    {
-        return $this->markdownEngine;
-    }
-
-    /**
-     * Parses a token and returns a node.
-     *
-     * @param \Twig_Token $token A \Twig_Token instance
-     *
-     * @throws \Twig_Error_Syntax
-     * @return \Twig_NodeInterface A \Twig_NodeInterface instance
+     * {@inheritdoc}
      */
     public function parse(\Twig_Token $token)
     {
         $lineno = $token->getLine();
-        
+
         $this->parser->getStream()->expect(\Twig_Token::BLOCK_END_TYPE);
         $body = $this->parser->subparse(array($this, 'decideMarkdownEnd'), true);
         $this->parser->getStream()->expect(\Twig_Token::BLOCK_END_TYPE);
@@ -65,9 +36,7 @@ class MarkdownTokenParser extends \Twig_TokenParser
     }
 
     /**
-     * Gets the tag name associated with this token parser.
-     *
-     * @return string The tag name
+     * {@inheritdoc}
      */
     public function getTag()
     {
