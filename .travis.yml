@@ -17,7 +17,7 @@ before_install:
   - composer config --global github-oauth.github.com $COMPOSER_OAUTH
 
 install:
-  - composer install
+  - composer install -n
 
 before_script:
   - mkdir -p build/logs
