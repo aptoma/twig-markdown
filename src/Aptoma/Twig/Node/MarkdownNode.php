@@ -12,7 +12,7 @@ namespace Aptoma\Twig\Node;
  */
 class MarkdownNode extends \Twig_Node
 {
-    public function __construct(\Twig_NodeInterface $body, $lineno, $tag = 'markdown')
+    public function __construct(\Twig_Node $body, $lineno, $tag = 'markdown')
     {
         parent::__construct(array('body' => $body), array(), $lineno, $tag);
     }
