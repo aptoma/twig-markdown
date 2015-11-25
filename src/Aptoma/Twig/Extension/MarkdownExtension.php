@@ -43,7 +43,7 @@ class MarkdownExtension extends \Twig_Extension
     /**
      * Transform Markdown content to HTML
      *
-     * @param $content The Markdown content to be transformed
+     * @param string $content The Markdown content to be transformed
      * @return string The result of the Markdown engine transformation
      */
     public function parseMarkdown($content)

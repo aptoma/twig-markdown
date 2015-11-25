@@ -14,7 +14,7 @@ interface MarkdownEngineInterface
     /**
      * Transforms the given markdown data in HTML
      *
-     * @param $content Markdown data
+     * @param string $content Markdown data
      * @return string
      */
     public function transform($content);
