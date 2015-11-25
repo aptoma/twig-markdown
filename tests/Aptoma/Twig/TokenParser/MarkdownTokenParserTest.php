@@ -50,9 +50,9 @@ class MarkdownTokenParserTest extends \Twig_Test_NodeTestCase
      *
      * @dataProvider getTests
      */
-    public function testCompile($node, $source, $environment = null)
+    public function testCompile($node, $source, $environment = null, $isPattern = false)
     {
-        parent::testCompile($node, $source, $environment);
+        parent::testCompile($node, $source, $environment, $isPattern = false);
     }
 
     protected function getEngine()
