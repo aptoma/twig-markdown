@@ -79,7 +79,7 @@ preg_match("/^\s*/", \$content, \$matches);
 \$lines = explode("\\n", \$content);
 \$content = preg_replace('/^' . \$matches[0]. '/', "", \$lines);
 \$content = join("\\n", \$content);
-echo \$this->env->getTokenParsers()->getTokenParser('markdown')->getEngine()->transform(\$content);
+echo \$this->env->getExtension('markdown')->parseMarkdown(\$content);
 EOF
             );
 
@@ -100,7 +100,7 @@ preg_match("/^\s*/", \$content, \$matches);
 \$lines = explode("\\n", \$content);
 \$content = preg_replace('/^' . \$matches[0]. '/', "", \$lines);
 \$content = join("\\n", \$content);
-echo \$this->env->getTokenParsers()->getTokenParser('markdown')->getEngine()->transform(\$content);
+echo \$this->env->getExtension('markdown')->parseMarkdown(\$content);
 EOF
         );
 

@@ -56,7 +56,7 @@ class MarkdownExtension extends \Twig_Extension
      */
     public function getTokenParsers()
     {
-        return array(new MarkdownTokenParser($this->markdownEngine));
+        return array(new MarkdownTokenParser());
     }
 
     /**
