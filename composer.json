@@ -22,7 +22,7 @@
         "codeclimate/php-test-reporter": "dev-master",
         "michelf/php-markdown": "~1",
         "league/commonmark": "~0.5",
-        "knplabs/github-api": "~1.2",
+        "knplabs/github-api": "~1.4",
         "erusev/parsedown": "^1.6"
     },
     "suggest": {
