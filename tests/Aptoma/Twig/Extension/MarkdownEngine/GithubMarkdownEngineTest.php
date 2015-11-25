@@ -4,6 +4,7 @@ namespace Aptoma\Twig\Extension\MarkdownEngine;
 
 use Aptoma\Twig\Extension\MarkdownExtensionTest;
 use Github\Client;
+use Github\Exception\RuntimeException;
 
 require_once(__DIR__ . '/../MarkdownExtensionTest.php');
 
@@ -14,6 +15,18 @@ require_once(__DIR__ . '/../MarkdownExtensionTest.php');
  */
 class GitHubMarkdownEngineTest extends MarkdownExtensionTest
 {
+    /**
+     * @dataProvider getParseMarkdownTests
+     */
+    public function testParseMarkdown($template, $expected, $context = array())
+    {
+        try {
+           $this->assertEquals($expected, $this->getTemplate($template)->render($context));
+        } catch (RuntimeException $e) {
+            $this->markTestSkipped($e->getMessage());
+        }
+    }
+
     public function getParseMarkdownTests()
     {
         return array(
