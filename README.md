@@ -144,7 +144,7 @@ $engine = new MarkdownEngine\GitHubMarkdownEngine(
 In order to authenticate the API client (for instance), it's possible to pass an own instance of `\GitHub\Client` instead of letting the engine create one itself:
 
 ```php
-$client = new \GitHub\Client;
+$client = new \Github\Client;
 $client->authenticate('GITHUB_CLIENT_ID', 'GITHUB_CLIENT_SECRET', \Github\Client::AUTH_URL_CLIENT_ID);
 
 $engine = new MarkdownEngine\GitHubMarkdownEngine('aptoma/twig-markdown', true, '/tmp/markdown-cache', $client);
