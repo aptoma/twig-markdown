@@ -19,7 +19,13 @@ class MichelfMarkdownEngine implements MarkdownEngineInterface
      */
     public function transform($content)
     {
-        return MarkdownExtra::defaultTransform($content);
+        $engine = new MarkdownExtra();
+        foreach (get_object_vars($this) as $property => $value) {
+            if (property_exists($engine, $property)) {
+                $engine->{$property} = $value;
+            }
+        }
+        return $engine->transform($content);
     }
 
     /**
