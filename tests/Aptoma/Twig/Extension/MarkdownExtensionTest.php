@@ -3,11 +3,12 @@
 namespace Aptoma\Twig\Extension;
 
 use Aptoma\Twig\Extension\MarkdownEngine\MichelfMarkdownEngine;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @author Gunnar Liun <gunnar@aptoma.com>
  */
-class MarkdownExtensionTest extends \PHPUnit_Framework_TestCase
+class MarkdownExtensionTest extends TestCase
 {
     /**
      * @dataProvider getParseMarkdownTests
