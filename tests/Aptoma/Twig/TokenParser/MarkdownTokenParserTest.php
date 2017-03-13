@@ -4,11 +4,16 @@ namespace Aptoma\Twig\TokenParser;
 
 use Aptoma\Twig\Extension\MarkdownEngine\MichelfMarkdownEngine;
 use Aptoma\Twig\Node\MarkdownNode;
+use PHPUnit\Framework\TestCase;
+use Twig_Compiler;
+use Twig_Environment;
+use Twig_Loader_Array;
+use Twig_Node;
 
 /**
  * @author Gunnar Lium <gunnar@aptoma.com>
  */
-class MarkdownTokenParserTest extends \Twig_Test_NodeTestCase
+class MarkdownTokenParserTest extends TestCase
 {
     public function testConstructor()
     {
@@ -52,7 +57,7 @@ class MarkdownTokenParserTest extends \Twig_Test_NodeTestCase
      */
     public function testCompile($node, $source, $environment = null, $isPattern = false)
     {
-        parent::testCompile($node, $source, $environment, $isPattern = false);
+        $this->assertNodeCompilation($source, $node, $environment, $isPattern = false);
     }
 
     protected function getEngine()
@@ -105,5 +110,27 @@ EOF
         );
 
         return $tests;
+    }
+
+    public function assertNodeCompilation($source, Twig_Node $node, Twig_Environment $environment = null, $isPattern = false)
+    {
+        $compiler = $this->getCompiler($environment);
+        $compiler->compile($node);
+
+        if ($isPattern) {
+            $this->assertStringMatchesFormat($source, trim($compiler->getSource()));
+        } else {
+            $this->assertEquals($source, trim($compiler->getSource()));
+        }
+    }
+
+    protected function getCompiler(Twig_Environment $environment = null)
+    {
+        return new Twig_Compiler(null === $environment ? $this->getEnvironment() : $environment);
+    }
+
+    protected function getEnvironment()
+    {
+        return new Twig_Environment(new Twig_Loader_Array(array()));
     }
 }
