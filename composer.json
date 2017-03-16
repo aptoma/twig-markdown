@@ -1,5 +1,5 @@
 {
-    "name": "aptoma/twig-markdown",
+    "name": "breaker1/twig-markdown",
     "description": "Twig extension to work with Markdown content",
     "keywords": ["twig", "markdown"],
     "license": "MIT",
