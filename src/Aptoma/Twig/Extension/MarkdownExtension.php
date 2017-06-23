@@ -32,7 +32,7 @@ class MarkdownExtension extends \Twig_Extension
     public function getFilters()
     {
         return array(
-            new \Twig_SimpleFilter(
+            new \Twig_Filter(
                 'markdown',
                 array($this, 'parseMarkdown'),
                 array('is_safe' => array('html'))
@@ -57,13 +57,5 @@ class MarkdownExtension extends \Twig_Extension
     public function getTokenParsers()
     {
         return array(new MarkdownTokenParser());
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getName()
-    {
-        return 'markdown';
     }
 }

@@ -37,6 +37,6 @@ class MarkdownExtensionTest extends TestCase
         $twig = new \Twig_Environment($loader, array('debug' => true, 'cache' => false));
         $twig->addExtension(new MarkdownExtension($this->getEngine()));
 
-        return $twig->loadTemplate('index');
+        return $twig->load('index');
     }
 }

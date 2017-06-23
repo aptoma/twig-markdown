@@ -2,7 +2,6 @@ Twig Markdown Extension
 =======================
 
 [![Build Status](https://secure.travis-ci.org/aptoma/twig-markdown.png?branch=master)](http://travis-ci.org/aptoma/twig-markdown)
-[![Coverage Status](https://img.shields.io/coveralls/aptoma/twig-markdown.svg)](https://coveralls.io/r/aptoma/twig-markdown)
 
 Twig Markdown extension provides a new filter and a tag to allow parsing of
 content as Markdown in [Twig][1] templates.

@@ -84,7 +84,7 @@ preg_match("/^\s*/", \$content, \$matches);
 \$lines = explode("\\n", \$content);
 \$content = preg_replace('/^' . \$matches[0]. '/', "", \$lines);
 \$content = join("\\n", \$content);
-echo \$this->env->getExtension('markdown')->parseMarkdown(\$content);
+echo \$this->env->getExtension('Aptoma\Twig\Extension\MarkdownExtension')->parseMarkdown(\$content);
 EOF
             );
 
@@ -105,7 +105,7 @@ preg_match("/^\s*/", \$content, \$matches);
 \$lines = explode("\\n", \$content);
 \$content = preg_replace('/^' . \$matches[0]. '/', "", \$lines);
 \$content = join("\\n", \$content);
-echo \$this->env->getExtension('markdown')->parseMarkdown(\$content);
+echo \$this->env->getExtension('Aptoma\Twig\Extension\MarkdownExtension')->parseMarkdown(\$content);
 EOF
         );
 
