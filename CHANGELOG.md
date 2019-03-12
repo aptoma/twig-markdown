@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+Unreleased
+-----
+
+Upgrade to twig 2.7 and namespace, due to [a security issue](https://symfony.com/blog/twig-sandbox-information-disclosure)
+
 2.0.0
 -----
 

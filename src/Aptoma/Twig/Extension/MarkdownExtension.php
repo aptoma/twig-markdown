@@ -10,7 +10,7 @@ use Aptoma\Twig\TokenParser\MarkdownTokenParser;
  * @author Gunnar Lium <gunnar@aptoma.com>
  * @author Joris Berthelot <joris@berthelot.tel>
  */
-class MarkdownExtension extends \Twig_Extension
+class MarkdownExtension extends \Twig\Extension\AbstractExtension
 {
 
     /**
@@ -32,7 +32,7 @@ class MarkdownExtension extends \Twig_Extension
     public function getFilters()
     {
         return array(
-            new \Twig_Filter(
+            new \Twig\TwigFilter(
                 'markdown',
                 array($this, 'parseMarkdown'),
                 array('is_safe' => array('html'))
