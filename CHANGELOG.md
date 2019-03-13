@@ -1,16 +1,16 @@
 CHANGELOG
 =========
 
-Unreleased
+2.1.0
 -----
 
-Upgrade to twig 2.7 and namespace, due to [a security issue](https://symfony.com/blog/twig-sandbox-information-disclosure)
+- **FIX**: Upgrade to Twig 2.7 and namespace, due to [a security issue](https://symfony.com/blog/twig-sandbox-information-disclosure)
 
 2.0.0
 -----
 
 - **BC**: Require Twig v1.12, in order to replace deprecated Twig_Filter_Method with Twig_SimpleFilter
-- **Added**: Add support for ParsedownEnging
+- **Added**: Add support for ParsedownEngine
 
 1.2.0
 -----
