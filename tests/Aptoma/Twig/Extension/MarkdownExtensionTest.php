@@ -33,8 +33,8 @@ class MarkdownExtensionTest extends TestCase
 
     protected function getTemplate($template)
     {
-        $loader = new \Twig_Loader_Array(array('index' => $template));
-        $twig = new \Twig_Environment($loader, array('debug' => true, 'cache' => false));
+        $loader = new \Twig\Loader\ArrayLoader(array('index' => $template));
+        $twig = new \Twig\Environment($loader, array('debug' => true, 'cache' => false));
         $twig->addExtension(new MarkdownExtension($this->getEngine()));
 
         return $twig->load('index');

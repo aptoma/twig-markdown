@@ -5,10 +5,11 @@ namespace Aptoma\Twig\TokenParser;
 use Aptoma\Twig\Extension\MarkdownEngine\MichelfMarkdownEngine;
 use Aptoma\Twig\Node\MarkdownNode;
 use PHPUnit\Framework\TestCase;
-use Twig_Compiler;
-use Twig_Environment;
-use Twig_Loader_Array;
-use Twig_Node;
+use Twig\Compiler;
+use Twig\Environment;
+use Twig\Loader\ArrayLoader;
+use Twig\Node\Node;
+use Twig\Node\TextNode;
 
 /**
  * @author Gunnar Lium <gunnar@aptoma.com>
@@ -17,7 +18,7 @@ class MarkdownTokenParserTest extends TestCase
 {
     public function testConstructor()
     {
-        $body = new \Twig_Node(array(new \Twig_Node_Text("#Title\n\nparagraph\n", 1)));
+        $body = new Node(array(new TextNode("#Title\n\nparagraph\n", 1)));
         $node = new MarkdownNode($body, 1);
 
         $this->assertEquals($body, $node->getNode('body'));
@@ -69,7 +70,7 @@ class MarkdownTokenParserTest extends TestCase
     {
         $tests = array();
 
-        $body = new \Twig_Node(array(new \Twig_Node_Text("#Title\n\nparagraph\n", 1)));
+        $body = new Node(array(new TextNode("#Title\n\nparagraph\n", 1)));
         $node = new MarkdownNode($body, 1);
 
         $tests['simple text'] = array($node, <<<EOF
@@ -88,7 +89,7 @@ echo \$this->env->getExtension('Aptoma\Twig\Extension\MarkdownExtension')->parse
 EOF
             );
 
-        $body = new \Twig_Node(array(new \Twig_Node_Text("    #Title\n\n    paragraph\n\n        code\n", 1)));
+        $body = new Node(array(new TextNode("    #Title\n\n    paragraph\n\n        code\n", 1)));
         $node = new MarkdownNode($body, 1);
 
         $tests['text with leading indent'] = array($node, <<<EOF
@@ -112,7 +113,7 @@ EOF
         return $tests;
     }
 
-    public function assertNodeCompilation($source, Twig_Node $node, Twig_Environment $environment = null, $isPattern = false)
+    public function assertNodeCompilation($source, Node $node, Environment $environment = null, $isPattern = false)
     {
         $compiler = $this->getCompiler($environment);
         $compiler->compile($node);
@@ -124,13 +125,13 @@ EOF
         }
     }
 
-    protected function getCompiler(Twig_Environment $environment = null)
+    protected function getCompiler(Environment $environment = null)
     {
-        return new Twig_Compiler(null === $environment ? $this->getEnvironment() : $environment);
+        return new Compiler(null === $environment ? $this->getEnvironment() : $environment);
     }
 
     protected function getEnvironment()
     {
-        return new Twig_Environment(new Twig_Loader_Array(array()));
+        return new Environment(new ArrayLoader(array()));
     }
 }

@@ -10,9 +10,9 @@ namespace Aptoma\Twig\Node;
  * @author Gunnar Lium <gunnar@aptoma.com>
  * @author Joris Berthelot <joris@berthelot.tel>
  */
-class MarkdownNode extends \Twig_Node
+class MarkdownNode extends \Twig\Node\Node
 {
-    public function __construct(\Twig_Node $body, $lineno, $tag = 'markdown')
+    public function __construct(\Twig\Node\Node $body, $lineno, $tag = 'markdown')
     {
         parent::__construct(array('body' => $body), array(), $lineno, $tag);
     }
@@ -20,9 +20,9 @@ class MarkdownNode extends \Twig_Node
     /**
      * Compiles the node to PHP.
      *
-     * @param \Twig_Compiler A Twig_Compiler instance
+     * @param \Twig\Compiler A Twig\Compiler instance
      */
-    public function compile(\Twig_Compiler $compiler)
+    public function compile(\Twig\Compiler $compiler)
     {
         $compiler
             ->addDebugInfo($this)
