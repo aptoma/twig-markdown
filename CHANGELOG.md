@@ -1,6 +1,10 @@
 CHANGELOG
 =========
 
+3.2.0
+
+- **Added**: Support for HMTL escaping in ParsdownEngine
+
 2.1.0
 -----
 
