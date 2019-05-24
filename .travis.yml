@@ -1,15 +1,6 @@
 language: php
-sudo: false
-
 php:
-  - 7
-
-env:
-  global:
-    - secure: "Dgt5oh2wUy8wIkeDy422/zSKFOosGjB/M2mCRW5mrIoNeIjO5hw/bc6OxrDCvIKipCmoEnjQmFo2L4GBwAHl4U+EtTV5Psn3TxIlHfR3GhwK70beI9IMY1E4IDx5tKpPAoiTXxjOGz9WNvwlaSgFE6xonxn3FE2XwS2jmb2FvEU="
-
-before_install:
-  - composer config --global github-oauth.github.com $COMPOSER_OAUTH
+  - 7.1
 
 install:
   - composer install -n
