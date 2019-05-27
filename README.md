@@ -60,7 +60,7 @@ Or update your `composer.json`:
 ```json
 {
     "require": {
-        "aptoma/twig-markdown": "~2.0"
+        "aptoma/twig-markdown": "~3.0"
     }
 }
 ```
@@ -69,13 +69,13 @@ You can choose to provide your own Markdown engine, although we recommend
 using [michelf/php-markdown](https://github.com/michelf/php-markdown):
 
 ```bash
-composer require michelf/php-markdown ~1.3
+composer require michelf/php-markdown ~1.8
 ```
 
 ```json
 {
     "require": {
-        "michelf/php-markdown": "~1.3"
+        "michelf/php-markdown": "~1.8"
     }
 }
 ```
@@ -83,13 +83,13 @@ composer require michelf/php-markdown ~1.3
 You may also use the [PHP League CommonMark engine](http://commonmark.thephpleague.com/):
 
 ```bash
-composer require league/commonmark ~0.5
+composer require league/commonmark ~0.19
 ```
 
 ```json
 {
     "require": {
-        "league/commonmark": "~0.5"
+        "league/commonmark": "~0.19"
     }
 }
 ```
