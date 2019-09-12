@@ -126,6 +126,23 @@ $engine = new MarkdownEngine\MichelfMarkdownEngine();
 $twig->addTokenParser(new MarkdownTokenParser($engine));
 ```
 
+### Symfony
+
+To use this extension in a [Symfony 3/4 app](https://symfony.com) (including [Pimcore](https://pimcore.com/)), add the following snippet to your app's `app/config/services.yml` file:
+
+```yaml
+services:
+    # ...
+    
+    markdown.engine:
+        class: Aptoma\Twig\Extension\MarkdownEngine\MichelfMarkdownEngine
+    twig.markdown:
+        class: Aptoma\Twig\Extension\MarkdownExtension
+        arguments: ['@markdown.engine']
+        tags:
+            - { name: twig.extension }
+```
+
 ### GitHub Markdown Engine
 
 `MarkdownEngine\GitHubMarkdownEngine` provides an interface to GitHub's markdown engine using their public API via [`KnpLabs\php-github-api`][2]. To reduce API calls, rendered documents are hashed and cached in the filesystem. You can pass a GitHub repository and the path to be used for caching to the constructor:
