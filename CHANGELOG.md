@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+3.3.0
+-----
+
+- **Added**: Support for Twig 3
+
 3.2.0
 
 - **Added**: Support for HMTL escaping in ParsdownEngine
