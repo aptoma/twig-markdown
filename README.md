@@ -118,12 +118,9 @@ $twig->addExtension(new MarkdownExtension($engine));
 The Twig token parser provides the `markdown` tag only!
 
 ```php
-use Aptoma\Twig\Extension\MarkdownEngine;
 use Aptoma\Twig\TokenParser\MarkdownTokenParser;
 
-$engine = new MarkdownEngine\MichelfMarkdownEngine();
-
-$twig->addTokenParser(new MarkdownTokenParser($engine));
+$twig->addTokenParser(new MarkdownTokenParser());
 ```
 
 ### Symfony
