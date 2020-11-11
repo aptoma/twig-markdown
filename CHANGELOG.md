@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+3.3.1
+-----
+
+- **FIX**: Fix invalid cacheDir for GH engine on Windows
+
 3.3.0
 -----
 
