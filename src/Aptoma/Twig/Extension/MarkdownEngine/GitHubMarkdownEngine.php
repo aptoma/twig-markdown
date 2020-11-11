@@ -22,14 +22,18 @@ class GitHubMarkdownEngine implements MarkdownEngineInterface
      * @param bool $gfm Whether to use GitHub's Flavored Markdown or the
      *        standard markdown. Default is true.
      * @param string $cacheDir Location on disk where rendered documents should
-     *        be stored.
+     *        be stored. Defaults to 'github-markdown-cache' folder in system
+     *        temp directory if no path is provided.
      * @param \Github\Client $client Client object to use. A new Github\Client()
      *        object is constructed automatically if $client is null.
      */
-    public function __construct($contextRepo = null, $gfm = true, $cacheDir = '/tmp/github-markdown-cache', \GitHub\Client $client=null)
+    public function __construct($contextRepo = null, $gfm = true, $cacheDir = null, \GitHub\Client $client=null)
     {
         $this->repo = $contextRepo;
         $this->mode = $gfm ? 'gfm' : 'markdown';
+        if (is_null($cacheDir)) {
+            $cacheDir = sys_get_temp_dir() . DIRECTORY_SEPARATOR . 'github-markdown-cache';
+        }
         $this->cacheDir = rtrim($cacheDir, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
         if (!is_dir($this->cacheDir)) {
             @mkdir($this->cacheDir, 0777, true);
