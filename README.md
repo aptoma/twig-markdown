@@ -1,7 +1,7 @@
 Twig Markdown Extension
 =======================
 
-[![Build Status](https://secure.travis-ci.org/aptoma/twig-markdown.png?branch=master)](http://travis-ci.org/aptoma/twig-markdown)
+[![Build Status](https://github.com/aptoma/twig-markdown/workflows/Test/badge.svg?branch=master)](https://github.com/aptoma/twig-markdown/actions?query=branch%3Amaster)
 
 Twig Markdown extension provides a new filter and a tag to allow parsing of
 content as Markdown in [Twig][1] templates.
@@ -130,7 +130,7 @@ To use this extension in a [Symfony 3/4 app](https://symfony.com) (including [Pi
 ```yaml
 services:
     # ...
-    
+
     markdown.engine:
         class: Aptoma\Twig\Extension\MarkdownEngine\MichelfMarkdownEngine
     twig.markdown:
