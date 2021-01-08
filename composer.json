@@ -22,7 +22,8 @@
         "michelf/php-markdown": "~1",
         "league/commonmark": "~0.5",
         "knplabs/github-api": "~3.0",
-        "erusev/parsedown": "^1.6"
+        "erusev/parsedown": "^1.6",
+        "guzzlehttp/guzzle": "^7.2"
     },
     "suggest": {
         "michelf/php-markdown": "Original Markdown engine with MarkdownExtra.",
