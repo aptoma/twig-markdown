@@ -14,16 +14,18 @@
         }
     ],
     "require": {
-        "php": "^7.0",
+        "php": "^7.0|^8.0",
         "twig/twig": "^2.7.0|^3.0"
     },
     "require-dev": {
+        "php": "^7.2.5|^8.0",
         "phpunit/phpunit": "~6.0|~5.0|~8.0",
-        "codeclimate/php-test-reporter": "dev-master",
         "michelf/php-markdown": "~1",
         "league/commonmark": "~0.5",
-        "knplabs/github-api": "~1.4",
-        "erusev/parsedown": "^1.6"
+        "knplabs/github-api": "~3.0",
+        "erusev/parsedown": "^1.6",
+        "guzzlehttp/guzzle": "^7.2",
+        "http-interop/http-factory-guzzle": "^1.0"
     },
     "suggest": {
         "michelf/php-markdown": "Original Markdown engine with MarkdownExtra.",
