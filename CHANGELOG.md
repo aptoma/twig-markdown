@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+3.4.0
+-----
+
+ - **Addedd**: PHP 8.0 compatibility
+ - **Changed**: Migrate test suite from Travis to GitHub
+
 3.3.1
 -----
 
