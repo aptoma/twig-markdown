@@ -41,7 +41,7 @@ class GitHubMarkdownEngineTest extends MarkdownExtensionTest
     {
         $client = new Client();
 
-        if ($client->rateLimit()->getCoreLimit() < 1) {
+        if ($client->rateLimit()->getResource('core')->getLimit() < 1) {
             $this->markTestSkipped('The github API rate limit is reached, so this engine cannot be tested.');
         }
 
