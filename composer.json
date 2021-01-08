@@ -18,6 +18,7 @@
         "twig/twig": "^2.7.0|^3.0"
     },
     "require-dev": {
+        "php": "^7.2.5|^8.0",
         "phpunit/phpunit": "~6.0|~5.0|~8.0",
         "michelf/php-markdown": "~1",
         "league/commonmark": "~0.5",
