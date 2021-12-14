@@ -10,7 +10,7 @@ use Aptoma\Twig\TokenParser\MarkdownTokenParser;
  * @author Gunnar Lium <gunnar@aptoma.com>
  * @author Joris Berthelot <joris@berthelot.tel>
  */
-class MarkdownExtension extends \Twig\Extension\AbstractExtension
+class MarkdownExtension extends \Twig\Extension\AbstractExtension implements \Twig\Extension\ExtensionInterface
 {
 
     /**
