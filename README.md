@@ -3,6 +3,8 @@ Twig Markdown Extension
 
 [![Build Status](https://github.com/aptoma/twig-markdown/workflows/Test/badge.svg?branch=master)](https://github.com/aptoma/twig-markdown/actions?query=branch%3Amaster)
 
+**THIS EXTENSION IS NO LONGER MAINTAINED, AND WE WILL NOT MAKE ANY NEW RELEASES. IF ANYONE WANTS TO TAKE OVER, PLEASE MAKE A FORK AND PUBLISH A NEW PACKAGE, AND WE'LL LINK TO THE NEW VERSION.**
+
 Twig Markdown extension provides a new filter and a tag to allow parsing of
 content as Markdown in [Twig][1] templates.
 
